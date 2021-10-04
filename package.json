@@ -1,0 +1,23 @@
+{
+  "name": "json-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "yarn generate-data & node index.js",
+    "dev": "nodemon index.js",
+    "generate-data": "node generate-data.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.13"
+  },
+  "dependencies": {
+    "faker": "^5.5.3",
+    "json-server": "^0.16.3",
+    "query-string": "^7.0.1"
+  }
+}

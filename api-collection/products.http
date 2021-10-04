@@ -1,0 +1,45 @@
+@base = https://json-server-nns.herokuapp.com/api
+
+@source = products
+
+# Product
+
+# @name get
+GET {{base}}/{{source}}
+
+###
+
+# @name filters
+GET {{base}}/{{source}}?_page=1&_limit=3
+
+###
+
+# @name create
+POST {{base}}/{{source}}
+Content-Type: application/json
+
+{
+  "categoryId": "d7ce3d7",
+  "id": "test-id",
+  "index": 99,
+  "name": "Name Test",
+  "description": "The Nagasaki Lander is the trademarked name of several series of Nagasaki sport bikes, that started with the 1984 ABC800J",
+  "price": 999,
+  "thumbnailUrl": "http://placeimg.com/500/500"
+}
+
+###
+
+# @name update
+PATCH  {{base}}/{{source}}/test-id
+Content-Type: application/json
+
+{
+  "name": "New new new 2222",
+  "price": 555
+}
+
+###
+
+# @name remove
+DELETE  {{base}}/{{source}}/test-id
