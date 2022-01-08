@@ -1,7 +1,7 @@
 import faker from 'faker';
 import fs from 'fs';
 
-const randomProductList = (numOfProducts) => {
+function randomProductList(numOfProducts) {
   if (numOfProducts <= 0) return [];
 
   const productList = [];
@@ -23,22 +23,22 @@ const randomProductList = (numOfProducts) => {
   });
 
   return productList;
-};
+}
 
-const randomPostList = (numOfPosts) => {
+function randomTags() {
+  const numOfTags = Math.trunc(Math.random() * 4);
+
+  const tagList = Array.from(new Array(numOfTags)).map(() => {
+    return faker.commerce.productAdjective();
+  });
+
+  return tagList;
+}
+
+function randomPostList(numOfPosts) {
   if (numOfPosts <= 0) return [];
 
   const postList = [];
-
-  const randomTags = () => {
-    const numOfTags = Math.trunc(Math.random() * 4);
-
-    const tagList = Array.from(new Array(numOfTags)).map(() => {
-      return faker.commerce.productAdjective();
-    });
-
-    return tagList;
-  };
 
   Array.from(new Array(numOfPosts)).forEach(() => {
     const post = {
@@ -57,7 +57,7 @@ const randomPostList = (numOfPosts) => {
   });
 
   return postList;
-};
+}
 
 (() => {
   const productList = randomProductList(50);
