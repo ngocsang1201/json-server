@@ -46,6 +46,7 @@ function randomPostList(numOfPosts) {
       author: faker.name.findName(),
       avatar: faker.image.avatar(),
       title: faker.name.title(),
+      description: faker.lorem.sentence(20),
       content: faker.lorem.paragraphs(),
       thumbnail: faker.random.image(),
       tags: randomTags(),
