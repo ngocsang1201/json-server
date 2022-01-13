@@ -41,6 +41,8 @@ function randomPostList(numOfPosts) {
   const postList = [];
 
   Array.from(new Array(numOfPosts)).forEach(() => {
+    const randomNumber = Math.trunc(Math.random() * 9000 + 1000);
+
     const post = {
       id: faker.datatype.uuid(),
       author: faker.name.findName(),
@@ -48,10 +50,10 @@ function randomPostList(numOfPosts) {
       title: faker.name.title(),
       description: faker.lorem.sentence(20),
       content: faker.lorem.paragraphs(),
-      thumbnail: faker.random.image(),
+      thumbnail: `https://picsum.photos/id/${randomNumber}/1368/400`,
       tags: randomTags(),
       createdAt: faker.date.past(),
-      updatedAt: Date.now(),
+      updatedAt: faker.date.recent(),
     };
 
     postList.push(post);
