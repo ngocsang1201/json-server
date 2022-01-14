@@ -1,8 +1,8 @@
 import faker from 'faker';
 import fs from 'fs';
 
-const randomNumber = (to, from = 0) =>
-  Math.trunc(Math.random() * (to - from) + from);
+export const randomNumber = (min, max) =>
+  Math.trunc(Math.random() * (max - min + 1) + min);
 
 const randomProductList = (numOfProducts) => {
   if (numOfProducts <= 0) return [];
@@ -10,7 +10,7 @@ const randomProductList = (numOfProducts) => {
   const productList = [];
 
   Array.from(new Array(numOfProducts)).forEach((_, index) => {
-    const imageId = randomNumber(1000, 100);
+    const imageId = randomNumber(100, 999);
 
     const product = {
       id: faker.datatype.uuid(),
@@ -19,7 +19,7 @@ const randomProductList = (numOfProducts) => {
       color: faker.commerce.color(),
       price: Number.parseFloat(faker.commerce.price()),
       description: faker.commerce.productDescription(),
-      thumbnailUrl: `https://picsum.photos/id/${imageId}/1368/400`,
+      thumbnailUrl: `https://picsum.photos/id/${imageId}/1368/800`,
       createdAt: Date.now(),
       updatedAt: Date.now(),
     };
@@ -31,7 +31,7 @@ const randomProductList = (numOfProducts) => {
 };
 
 const randomTags = () => {
-  const numOfTags = randomNumber(4);
+  const numOfTags = randomNumber(0, 4);
 
   const tagList = Array.from(new Array(numOfTags)).map(() => {
     return faker.commerce.productAdjective();
@@ -46,7 +46,7 @@ const randomPostList = (numOfPosts) => {
   const postList = [];
 
   Array.from(new Array(numOfPosts)).forEach(() => {
-    const imageId = randomNumber(1000, 100);
+    const imageId = randomNumber(100, 999);
 
     const post = {
       id: faker.datatype.uuid(),
@@ -55,7 +55,7 @@ const randomPostList = (numOfPosts) => {
       title: faker.name.title(),
       description: faker.lorem.sentence(20),
       content: faker.lorem.paragraphs(),
-      thumbnail: `https://picsum.photos/id/${imageId}/1368/400`,
+      thumbnail: `https://picsum.photos/id/${imageId}/1368/800`,
       tags: randomTags(),
       createdAt: faker.date.past(),
       updatedAt: faker.date.recent(),
