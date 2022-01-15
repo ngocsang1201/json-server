@@ -19,7 +19,7 @@ const randomProductList = (numOfProducts) => {
       color: faker.commerce.color(),
       price: Number.parseFloat(faker.commerce.price()),
       description: faker.commerce.productDescription(),
-      thumbnailUrl: `https://picsum.photos/id/${imageId}/1368/800`,
+      imageUrl: `https://picsum.photos/id/${imageId}/1368/800`,
       createdAt: Date.now(),
       updatedAt: Date.now(),
     };
@@ -55,7 +55,7 @@ const randomPostList = (numOfPosts) => {
       title: faker.name.title(),
       description: faker.lorem.sentence(20),
       content: faker.lorem.paragraphs(),
-      thumbnail: `https://picsum.photos/id/${imageId}/1368/800`,
+      imageUrl: `https://picsum.photos/id/${imageId}/1368/800`,
       tags: randomTags(),
       createdAt: faker.date.past(),
       updatedAt: faker.date.recent(),
