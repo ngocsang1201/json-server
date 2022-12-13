@@ -7,7 +7,7 @@
   "scripts": {
     "start": "yarn generate-data & node index.js",
     "dev": "nodemon index.js",
-    "generate-data": "node generate-data.js"
+    "generate-data": "node generate-data/index.js"
   },
   "keywords": [],
   "author": "",

@@ -35,17 +35,17 @@ server.use((req, res, next) => {
 router.render = (req, res) => {
   const headers = res.getHeaders();
 
-  const totalRowsHeader = headers['x-total-count'];
+  const totalCount = headers['x-total-count'];
 
   const queryParams = queryString.parse(req._parsedUrl.query);
 
-  if (req.method === 'GET' && totalRowsHeader) {
+  if (req.method === 'GET' && totalCount) {
     const result = {
       data: res.locals.data,
       pagination: {
         _page: Number.parseInt(queryParams._page) || 1,
         _limit: Number.parseInt(queryParams._limit) || 10,
-        _totalRows: Number.parseInt(totalRowsHeader),
+        _totalCount: Number.parseInt(totalCount),
       },
     };
 
@@ -60,5 +60,5 @@ server.use('/api', router);
 
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
-  console.log('JSON Server is running');
+  console.log('JSON Server is running on port', PORT);
 });
